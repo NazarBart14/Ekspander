@@ -1,0 +1,36 @@
+﻿<Window x:Class="Ekspander.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ekspander" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Expander x:Name="FilmsExpdr" HorizontalAlignment="Right" IsExpanded="False" Background="{DynamicResource MaterialDesignPaper}" Padding="10" ExpandDirection="Left"
+          MaxWidth="200" Grid.Row="1" Grid.Column="1" Margin="0,0,0,90">
+            <Expander.Triggers>
+                <EventTrigger RoutedEvent="Expander.Expanded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.3" To="400" Storyboard.TargetProperty="(FrameworkElement.MaxWidth)" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Expander.Collapsed">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.3" To="200" Storyboard.TargetProperty="(FrameworkElement.MaxWidth)" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Expander.Triggers>
+            <ListBox Margin="0,0,0,480" >
+                <Button x:Name="LookingButton" Content="I'm looking" Click="LookingButton_Click"/>
+                <Button x:Name="LookedButton" Content="I've looked" Click="LookedButton_Click"/>
+                <Button x:Name="PlanningButton" Content="I'm planning" Click="PlanningButton_Click"/>
+            </ListBox>
+        </Expander>
+
+    </Grid>
+</Window>
